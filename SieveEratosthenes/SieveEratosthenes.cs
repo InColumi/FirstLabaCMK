@@ -15,7 +15,9 @@ namespace SimpleNumbers
                 {
                     for (int j = i + 1; j < numbers.Length; j++)
                     {
-                        if (numbers[i] != 0 && numbers[j] % numbers[i] == 0)
+                        if (numbers[i] != 0 &&
+                            numbers[j] != 0 &&
+                            numbers[j] % numbers[i] == 0)
                         {
                             numbers[j] = 0;
                         }
