@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FirstLabaCMK
 {
@@ -10,70 +7,63 @@ namespace FirstLabaCMK
     {
         static void Main(string[] args)
         {
-            string input;
-            int m;
-            int n;
-            List<int> simpleNumbers;
-            bool[] maybeSimple; 
-            Console.Write("Enter start number: ");
-            input = Console.ReadLine();
-            if (int.TryParse(input, out m))
+            ShowArray(SieveEratosthenes.GetSimpleNumbers(1000));
+            Console.ReadKey();
+        }
+
+        class SieveEratosthenes
+        {
+            public static int[] GetSimpleNumbers(int endNumber)
             {
-                simpleNumbers = new List<int>(m);
-                maybeSimple = new bool[m];
-                Fill(maybeSimple, true);
-                for (int i = 2; i * i < m; i++) 
+                if (CheckNumberOnPositive(endNumber))
                 {
-                    if (maybeSimple[i])
+                    int[] numbers = new int[endNumber];
+                    Fill(numbers);
+                    int size = numbers.Length;
+                    for (int i = 1; i < size; i++)
                     {
-                        for (int j = i * i; j < m; j+=i)
+                        for (int j = i + 1; j < size; j++)
                         {
-                            maybeSimple[j] = false;
+                            if (numbers[i] != 0 &&
+                                numbers[j] % numbers[i] == 0)
+                            {
+                                numbers[j] = 0;
+                            }
                         }
                     }
+                    DeleteZeroFrom(ref numbers);
+                    return numbers;
                 }
-
-                simpleNumbers.Add(0);
-                simpleNumbers.Add(1);
-                for (int i = 2; i < m; i++)
+                else
                 {
-                    if (maybeSimple[i])
-                    {
-                        simpleNumbers.Add(i);
-                    }
+                    throw new Exception("Number must be more than zero!");
                 }
-
-                ShowArray(simpleNumbers);
             }
-            else
+
+            private static bool CheckNumberOnPositive(int number) { return number > 0; }
+
+            private static void Fill(int[] arr)
             {
-                Console.WriteLine("Wrong number");
+                for (int i = 0; i < arr.Length; i++)
+                    arr[i] = i + 1;
             }
-            
-            Console.ReadKey();
-            Console.Clear();
+
+            private static void DeleteZeroFrom(ref int[] numbers)
+            {
+                List<int> newNumbers = new List<int>();
+                for (int i = 0; i < numbers.Length; i++)
+                    if (numbers[i] != 0)
+                        newNumbers.Add(numbers[i]);
+                numbers = newNumbers.ToArray();
+            }
         }
 
-        static void Fill(bool[] numbers, bool element)
-        {
-            for (int i = 0; i < numbers.Length; i++)
-                numbers[i] = element;
-        }
-
-        static void ShowArray(bool[] array)
+        static void ShowArray(int[] array)
         {
             Console.Write("[ ");
             for (int i = 0; i < array.Length - 1; i++)
                 Console.Write(array[i] + ", ");
-            Console.WriteLine(array[array.Length - 1] + " ]");
-        }
-
-        static void ShowArray(List<int> array)
-        {
-            Console.Write("[ ");
-            for (int i = 0; i < array.Count - 1; i++)
-                Console.Write(array[i] + ", ");
-            Console.WriteLine(array[array.Count - 1] + " ]");
+            Console.Write(array[array.Length - 1] + " ]");
         }
     }
 }
