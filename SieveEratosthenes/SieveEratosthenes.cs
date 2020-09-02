@@ -7,19 +7,21 @@ namespace SimpleNumbers
     {
         public static int[] GetSimpleNumbers(int endNumber)
         {
-            if (CheckNumberOnPositive(endNumber))
+            if (IsCorrect(endNumber))
             {
+                int sqrtFromEndNumber = (int)Math.Sqrt(endNumber);
                 int[] numbers = new int[endNumber];
-                Fill(numbers);
-                for (int i = 1; i < numbers.Length; i++)
+                FillArrayStartWithTwo(numbers);
+                for (int i = 1; i < sqrtFromEndNumber; i++)
                 {
-                    for (int j = i + 1; j < numbers.Length; j++)
+                    if(numbers[i] != 0)
                     {
-                        if (numbers[i] != 0 &&
-                            numbers[j] != 0 &&
-                            numbers[j] % numbers[i] == 0)
+                        for (int j = i + 1; j < endNumber; j++)
                         {
-                            numbers[j] = 0;
+                            if (numbers[j] != 0 && numbers[j] % numbers[i] == 0)
+                            {
+                                numbers[j] = 0;
+                            }
                         }
                     }
                 }
@@ -32,14 +34,14 @@ namespace SimpleNumbers
             }
         }
 
-        private static bool CheckNumberOnPositive(int number)
+        private static bool IsCorrect(int number)
         {
             return number > 0;
         }
 
-        private static void Fill(int[] arr)
+        private static void FillArrayStartWithTwo(int[] arr)
         {
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 1; i < arr.Length; i++)
                 arr[i] = i + 1;
         }
 
