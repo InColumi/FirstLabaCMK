@@ -7,9 +7,11 @@ namespace FirstLabaCMK
     {
         static void Main(string[] args)
         {
-            ShowArray(SieveEratosthenes.GetSimpleNumbers(100));
+            //ShowArray(SieveEratosthenes.GetSimpleNumbers(100));
+            SieveEratosthenes.ShowSimpleNumbers(91);
+            Console.WriteLine("End");
+            Console.ReadKey();
         }
-
         static void ShowArray(int[] array)
         {
             Console.Write("[ ");

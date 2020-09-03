@@ -7,7 +7,7 @@ namespace SimpleNumbers
     {
         public static int[] GetSimpleNumbers(int endNumber)
         {
-            if (IsCorrect(endNumber))
+            if (IsCorrectNumber(endNumber))
             {
                 int sqrtFromEndNumber = (int)Math.Sqrt(endNumber);
                 int[] numbers = new int[endNumber];
@@ -34,9 +34,33 @@ namespace SimpleNumbers
             }
         }
 
-        private static bool IsCorrect(int number)
+        public static void ShowSimpleNumbers(int endNumber)
         {
-            return number > 0;
+            if (IsCorrectNumber(endNumber))
+            {
+                bool isSimple = true;
+                for (int i = 2; i <= endNumber; i++)
+                {
+                    for (int j = 2; j <= (int)Math.Sqrt(i); j++)
+                    {
+                        if (i % j == 0)
+                        {
+                            isSimple = false;
+                            break;
+                        }
+                    }
+                    if (isSimple)
+                    {
+                        Console.WriteLine(i);
+                    }
+                    isSimple = true;
+                }
+            }
+        }
+
+        private static bool IsCorrectNumber(int number)
+        {
+            return number > 1;
         }
 
         private static void FillArrayStartWithTwo(int[] arr)
