@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace FirstLabaCMK
 {
     public static class Converter
     {
-        public static string GetNumberFromDecimalToBineire(long numberInDecima)
+        public static string GetNumberFromDecimalToBinary(long numberInDecima)
         {
+            IsCorrectNumber(numberInDecima);
             StringBuilder stringBuilder = new StringBuilder();
             List<byte> list = new List<byte>();
             long numberIn10 = numberInDecima;
@@ -26,6 +26,15 @@ namespace FirstLabaCMK
             }
 
             return stringBuilder.ToString();
+        }
+
+        private static bool IsCorrectNumber(long number)
+        {
+            if (number < 0)
+            {
+                throw new Exception("Number cannot be negative!");
+            }
+            return true;
         }
     }
 }

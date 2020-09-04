@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 
 namespace FirstLabaCMK
 {
@@ -9,9 +6,14 @@ namespace FirstLabaCMK
     {
         static void Main(string[] args)
         {
-            //ShowArray(SieveEratosthenes.GetSimpleNumbers(10));
-            //SieveEratosthenes.ShowSimpleNumbers(10);
-            Console.WriteLine(Converter.GetNumberFromDecimalToBineire(33));
+            //ShowArray(SieveEratosthenes.GetPrimeNumbers(10));
+            //SieveEratosthenes.ShowPrimeNumbers(10);
+            //Console.WriteLine(Converter.GetNumberFromDecimalToBinary(33));
+
+            Console.WriteLine(BinaryPow.GetNumber(33, 9, 5));
+            //Console.WriteLine(3 % 2 + 4 % 2);
+            //Console.WriteLine((3 + 4) % 2);
+
             Console.ReadKey();
         }
         static void ShowArray(int[] array)
