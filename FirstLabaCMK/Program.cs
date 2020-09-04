@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using SimpleNumbers;
 namespace FirstLabaCMK
 {
@@ -7,9 +6,8 @@ namespace FirstLabaCMK
     {
         static void Main(string[] args)
         {
-            //ShowArray(SieveEratosthenes.GetSimpleNumbers(100));
-            SieveEratosthenes.ShowSimpleNumbers(91);
-            Console.WriteLine("End");
+            ShowArray(SieveEratosthenes.GetSimpleNumbers(-10));
+            SieveEratosthenes.ShowSimpleNumbers(10);
             Console.ReadKey();
         }
         static void ShowArray(int[] array)
