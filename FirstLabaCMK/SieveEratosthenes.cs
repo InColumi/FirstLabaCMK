@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PrimeNumbers
+namespace FirstLabaCMK
 {
     public static class SieveEratosthenes
     {
