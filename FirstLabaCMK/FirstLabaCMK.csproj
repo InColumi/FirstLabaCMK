@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertToBineireSystem.cs" />
+    <Compile Include="Converter.cs" />
     <Compile Include="Gcd.cs" />
     <Compile Include="Pow.cs" />
     <Compile Include="Program.cs" />

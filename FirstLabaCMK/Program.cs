@@ -11,8 +11,7 @@ namespace FirstLabaCMK
         {
             //ShowArray(SieveEratosthenes.GetSimpleNumbers(10));
             //SieveEratosthenes.ShowSimpleNumbers(10);
-
-            Console.WriteLine(Gcd.GetGcd(-11, 5));
+            Console.WriteLine(Converter.GetNumberFromDecimalToBineire(33));
             Console.ReadKey();
         }
         static void ShowArray(int[] array)
