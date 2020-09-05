@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Numerics;
+using System.Security.Cryptography;
 
 namespace FirstLabaCMK
 {
@@ -7,12 +9,13 @@ namespace FirstLabaCMK
         static void Main(string[] args)
         {
             //ShowArray(SieveEratosthenes.GetPrimeNumbers(10));
-            //SieveEratosthenes.ShowPrimeNumbers(10);
+            SieveEratosthenes.ShowPrimeNumbers(1729);
             //Console.WriteLine(Converter.GetNumberFromDecimalToBinary(33));
 
-            Console.WriteLine(BinaryPow.GetNumber(33, 9, 5));
-            //Console.WriteLine(3 % 2 + 4 % 2);
-            //Console.WriteLine((3 + 4) % 2);
+            //Console.WriteLine(BinaryPow.GetNumber(1920, 1021, 3551));
+            //Console.WriteLine(BinaryPow.GetNumber(1805, 1021, 3551));
+            //Console.WriteLine(BinaryPow.GetNumber(0013, 1021, 3551));
+            MillerRabin.IsPrimeNumber(17);
 
             Console.ReadKey();
         }

@@ -4,22 +4,22 @@ namespace FirstLabaCMK
 {
     public static class BinaryPow
     {
-        public static int GetNumber(int numberInDecimal, int pow, int mod)
+        public static int GetNumber(int number, int pow, int mod)
         {
-            string numberInBineire = Converter.GetNumberFromDecimalToBinary(pow);
+            string numberInBinary = Converter.GetNumberFromDecimalToBinary(pow);
             int result = 1;
-            for (int i = 0; i < numberInBineire.Length; i++)
+            for (int i = 0; i < numberInBinary.Length; i++)
             {
-                byte number;
-                if (byte.TryParse(numberInBineire[i].ToString(), out number))
+                byte binaryNumber;
+                if (byte.TryParse(numberInBinary[i].ToString(), out binaryNumber))
                 {
-                    if (number == 0)
+                    if (binaryNumber == 0)
                     {
-                        result = Gcd.GetGcd(result * result, mod);
+                        result = Cripto.GetNumberModulo(result * result, mod);
                     }
                     else
                     {
-                        result = Gcd.GetGcd(result * result * numberInDecimal, mod);
+                        result = Cripto.GetNumberModulo(result * result * number, mod);
                     }
                 }
                 else
