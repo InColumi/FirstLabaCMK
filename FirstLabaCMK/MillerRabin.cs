@@ -14,7 +14,7 @@ namespace FirstLabaCMK
         {
             int t = 1;
             int randNumber = _rand.Next(1, number);
-            if (Cripto.Gcd(randNumber, number) != 1)
+            if (Cripto.GetGcd(randNumber, number) != 1)
             {
                 Console.WriteLine($"{number} - is composite");
             }
