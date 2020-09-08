@@ -2,7 +2,7 @@
 {
     public static class Cripto
     {
-        public static int GetNumberModulo(int number, int module)
+        public static int GetModulo(int number, int module)
         {
             int newNumber = number % module;
             return (newNumber < 0) ? newNumber + module : newNumber;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace FirstLabaCMK
 {
@@ -10,34 +11,68 @@ namespace FirstLabaCMK
     {
         private static Random _rand = new Random();
         
-        public static void IsPrimeNumber(int number)
+        public static void ShowHowInTask(int number, int countOftries, int x)
         {
-            int t = 1;
-            int randNumber = _rand.Next(1, number);
-            if (Cripto.GetGcd(randNumber, number) != 1)
-            {
-                Console.WriteLine($"{number} - is composite");
-            }
-            else
-            {
-                int y0 = BinaryPow.GetNumber(randNumber, t, number);
-                if (y0 == 1 || y0 == -1)
-                {
-                    Console.WriteLine($"{number} - is prime");
-                }
-                else
-                {
-                    int yj;
-                    for (int i = 1; i < randNumber; i++)
-                    {
-                        yj = y0 * y0;
-                        if (yj == 1 || yj == -1)
-                        {
+            int s = GetS(number);
+            int t = number - 1;
 
-                        }
-                    }
+            int randNumber;
+            for (int i = 0; i < countOftries; i++)
+            {
+                randNumber = x;
+                int y = BinaryPow.GetNumber(randNumber, t, number);
+
+                if (y == 1 || y == number - 1)
+                    continue;
+                Console.WriteLine($"x = {x}");
+                for (int j = 1; j < s; j++)
+                {
+                    Console.WriteLine($"\ty{j} = {y}");
+                    y = Cripto.GetModulo(y * y, number);
+
+                    if (y == 1)
+                        Console.WriteLine($"{number} is  not prime!");
+
+                    if (y == number - 1)
+                        break;
                 }
+
+                if (y != number - 1)
+                    Console.WriteLine($"{number} is  not prime!");
             }
+            Console.WriteLine($"{number} is prime!");
+        }
+
+        public static bool IsPrimeNumber(int number, int countOftries)
+        {
+            int s = GetS(number);
+            int t = number - 1;
+
+            int randNumber;
+            for (int i = 0; i < countOftries; i++)
+            {
+                randNumber = _rand.Next(1, number);
+                int y = BinaryPow.GetNumber(randNumber, t, number);
+
+                if (y == 1 || y == number - 1)
+                    continue;
+
+                for (int j = 1; j < s; j++)
+                {
+                    y = Cripto.GetModulo(y * y, number);
+
+                    if (y == 1)
+                        return false;
+
+                    if (y == number - 1)
+                        break;
+                }
+
+                if (y != number - 1)
+                    return false;
+            }
+
+            return true;
         }
 
         private static int GetS(int number)

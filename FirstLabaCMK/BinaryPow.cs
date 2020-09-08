@@ -15,11 +15,11 @@ namespace FirstLabaCMK
                 {
                     if (binaryNumber == 0)
                     {
-                        result = Cripto.GetNumberModulo(result * result, mod);
+                        result = Cripto.GetModulo(result * result, mod);
                     }
                     else
                     {
-                        result = Cripto.GetNumberModulo(result * result * number, mod);
+                        result = Cripto.GetModulo(Cripto.GetModulo(result * result, mod) * number, mod);
                     }
                 }
                 else
