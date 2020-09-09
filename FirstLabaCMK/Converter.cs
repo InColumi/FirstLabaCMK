@@ -17,12 +17,6 @@ namespace FirstLabaCMK
                 numberInDecima /= 2;
             }
             numberInBinary.Reverse();
-
-            foreach (var item in numberInBinary)
-            {
-                numberInBinary.Add(item);
-            }
-
             return numberInBinary;
         }
 
