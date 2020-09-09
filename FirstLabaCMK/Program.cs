@@ -10,18 +10,18 @@ namespace FirstLabaCMK
         {
             //ShowArray(SieveEratosthenes.GetPrimeNumbers(10));
             //SieveEratosthenes.ShowPrimeNumbers(1729);
-            
-            //foreach (var item in Converter.GetNumberFromDecimalToBinary(123123))
-            //{
-            //    Console.Write(item);
-            //}
+
+            foreach (var item in Converter.GetNumberFromDecimalToBinary(33))
+            {
+                Console.Write(item);
+            }
 
             //Console.WriteLine(BinaryPow.GetNumber(1920, 1021, 3551));
             //Console.WriteLine(BinaryPow.GetNumber(1805, 1021, 3551));
             //Console.WriteLine(BinaryPow.GetNumber(0013, 1021, 3551));
 
             //Console.WriteLine(MillerRabin.IsPrimeNumber(907, 999));
-            
+
             //int n = 15;
             //MillerRabin.ShowHowInTask(n, 1, 2);
             //MillerRabin.ShowHowInTask(n, 1, 3);

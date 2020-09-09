@@ -11,10 +11,7 @@ namespace FirstLabaCMK
             int result = 1;
             for (int i = 0; i < numberInBinary.Count; i++)
             {
-                if (numberInBinary[i] == 0)
-                    result = Cripto.GetModulo(result * result, mod);
-                else
-                    result = Cripto.GetModulo(Cripto.GetModulo(result * result, mod) * number, mod);
+                result = (numberInBinary[i] == 0) ?  Cripto.GetModulo(result * result, mod) : Cripto.GetModulo(Cripto.GetModulo(result * result, mod) * number, mod);
             }
             return result;
         }
