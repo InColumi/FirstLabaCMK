@@ -6,26 +6,24 @@ namespace FirstLabaCMK
 {
     public static class Converter
     {
-        public static string GetNumberFromDecimalToBinary(long numberInDecima)
+        public static List<int> GetNumberFromDecimalToBinary(int numberInDecima)
         {
             IsCorrectNumber(numberInDecima);
-            StringBuilder stringBuilder = new StringBuilder();
-            List<byte> list = new List<byte>();
-            long numberIn10 = numberInDecima;
+            List<int> numberInBinary = new List<int>();
 
-            while (numberIn10 >= 1)
+            while (numberInDecima >= 1)
             {
-                list.Add((byte)(numberIn10 % 2));
-                numberIn10 /= 2;
+                numberInBinary.Add(numberInDecima % 2);
+                numberInDecima /= 2;
             }
-            list.Reverse();
+            numberInBinary.Reverse();
 
-            foreach (var item in list)
+            foreach (var item in numberInBinary)
             {
-                stringBuilder.Append(item);
+                numberInBinary.Add(item);
             }
 
-            return stringBuilder.ToString();
+            return numberInBinary;
         }
 
         private static bool IsCorrectNumber(long number)
