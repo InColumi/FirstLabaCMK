@@ -28,7 +28,7 @@ namespace FirstLabaCMK
                 for (int j = 1; j < s; j++)
                 {
                     Console.WriteLine($"\ty{j} = {y}");
-                    y = Cripto.GetModulo(y * y, number);
+                    y = MathMethods.GetModulo(y * y, number);
 
                     if (y == 1)
                         Console.WriteLine($"{number} is  not prime!");
@@ -59,7 +59,7 @@ namespace FirstLabaCMK
 
                 for (int j = 1; j < s; j++)
                 {
-                    y = Cripto.GetModulo(y * y, number);
+                    y = MathMethods.GetModulo(y * y, number);
 
                     if (y == 1)
                         return false;

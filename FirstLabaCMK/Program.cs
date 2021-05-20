@@ -33,36 +33,52 @@ namespace FirstLabaCMK
             #endregion
             #region Laba4
 
-            //Random rand = new Random();
-            //string alphabet = GetAlphaBet();
-            //Console.WriteLine(alphabet);
+            Random rand = new Random();
+            string alphabet = GetAlphaBet();
+            Console.WriteLine(alphabet);
+            
+            int p; // простое число
+            int q; // число по исловию q < p - 1  rand.Next(1, p);
+            int a; // секретное числое абонента А из интервала (1, p- 1) rand.Next(1, p);
+            int r; // секретное числое абонента B из интервала (1, p- 1) rand.Next(1, p);
+            int h; // Участник A выбирает свой секретный ключ a,
+                   // вычисляет величину (h = q^a mod p) и пересылает информацию участнику B
+            int c1; // Участник B выбирает свой ключ r,
+                    // вычисляет величину (с1 = q^r mod p) и отправляет r, C1 участнику A
+            int c2; // Участник A, получив величины r и C1,
+                    // зашифровывает информацию M по формуле (С2 = M * h^r mod p)
+                    // и отсылает ее участнику B криптотекст С (с1, с2);
+            p = 23;
+            q = rand.Next(1, p); 
+            // A пересылает(h) B
+            a = rand.Next(1, p); 
+            h = BinaryPow.GetNumber(q, a, p);
+            Console.WriteLine($"A пересылает(h = {h}) B");
 
-            //int p = 23;
-            //int q = 5;//rand.Next(1, p);
-            //int c1, c2;
-            //// A пересылает(h) B
-            //int a = 6;//rand.Next(1, p);
-            //int h = BinaryPow.GetNumber(q, a, p);
-            //Console.WriteLine($"A пересылает(h = {h}) B");
-
-            //// B пересылает(r, c1) A
-            //int r = 10;// rand.Next(1, p);
-            //c1 = BinaryPow.GetNumber(q, r, p);
-            //Console.WriteLine($"B пересылает(r = {r}, c1 = {c1}) A");
-            //// A шифрует
-            //int M = 7;
-            //c2 = Cripto.GetModulo(M*BinaryPow.GetNumber(h, r, p), p);
-            //Console.WriteLine($"A шифрует M = {M} и пересылает(c1 = {c1}, c2 = {c2})");
-            //// B дешифрует
-            //int D;
-            ////D =
-            ////    Console.WriteLine($"B дешифрует");
+            
+            // B пересылает(r, c1) A
+            r = rand.Next(1, p); 
+            c1 = BinaryPow.GetNumber(q, r, p);
+            Console.WriteLine($"B пересылает(r = {r}, c1 = {c1}) A");
+            // A шифрует
+            int M = 7;
+            c2 = MathMethods.GetModulo(M * BinaryPow.GetNumber(h, r, p), p);
+            Console.WriteLine($"A шифрует M = {M} и пересылает(c1 = {c1}, c2 = {c2})");
+            // B дешифрует
+            int D;
+            //D =
+            //    Console.WriteLine($"B дешифрует");
             #endregion
 
             Console.ReadKey();
-
         }
 
+        /// <summary>
+        /// Возвращает алфавит
+        /// </summary>
+        /// <param name="startIndexAscii">начальное число в таблице Ascii</param>
+        /// <param name="endIndexAscii">конечное число в таблице Ascii</param>
+        /// <returns>алфавит в строке</returns>
         static string GetAlphaBet(int startIndexAscii = 65, int endIndexAscii = 90)
         {
             StringBuilder stringBuilder = new StringBuilder();

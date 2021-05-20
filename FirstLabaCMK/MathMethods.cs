@@ -1,13 +1,25 @@
 ﻿namespace FirstLabaCMK
 {
-    public static class Cripto
+    public static class MathMethods
     {
-        public static int GetModulo(int number, int module)
+		/// <summary>
+		/// Возвращает число number по модулю module
+		/// </summary>
+		/// <param name="number">число</param>
+		/// <param name="module">модуль</param>
+		/// <returns></returns>
+		public static int GetModulo(int number, int module)
         {
             int newNumber = number % module;
             return (newNumber < 0) ? newNumber + module : newNumber;
         }
 
+		/// <summary>
+		/// Возвращает НОД чисел a и b
+		/// </summary>
+		/// <param name="a">первое число</param>
+		/// <param name="b">второе число</param>
+		/// <returns>НОД</returns>
 		public static int GetGcd(int a, int b)
 		{
             while (a != 0 && b != 0)
@@ -20,6 +32,12 @@
             return a;
 		}
 
+		/// <summary>
+		/// Возвращает обратное число к числу a 
+		/// </summary>
+		/// <param name="a">первое число</param>
+		/// <param name="n">размер</param>
+		/// <returns></returns>
 		public static int GetReversNumber(int a, int n)
 		{
 			int x;
